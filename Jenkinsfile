@@ -81,5 +81,12 @@ pipeline {
                }
             }
         }
+
+    stage ('Deploy to Dev Environment') {
+    steps {
+    build job: 'project14/main', parameters: [[$class: 'StringParameterValue', name: 'env', value: 'dev']], propagate: false, wait: true
+    }
+  }
+
     }
 }
